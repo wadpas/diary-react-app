@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react'
+import './App.css'
+import Events from './components/events/Events'
+import NewEvent from './components/newEvent/NewEvent'
 
 function App() {
+  const [events, setEvent] = useState(['useState1', 'useState2'])
+
+  const addEvent = (event) => {
+    setEvent([...events, event])
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Diary</h1>
+      <NewEvent addEvent={addEvent} />
+      <Events events={events} />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
