@@ -1,14 +1,25 @@
-import styless from './Event.module.css'
+import styles from './Event.module.css'
+import { RiTodoFill } from 'react-icons/ri'
+import { RiDeleteBin6Fill } from 'react-icons/ri'
+import { FaCheck } from 'react-icons/fa'
 
-function Event({ event, index, removeEvent }) {
+function Event({ event, removeEvent, toggleComplete }) {
   return (
-    <div className={styless.event}>
-      <div
-        className={styless.eventText}
-        onDoubleClick={() => removeEvent(index)}
-      >
-        {event}
-      </div>
+    <div
+      className={`${styles.event} ${
+        event.isComplete ? styles.completedEvent : ''
+      }`}
+    >
+      <RiTodoFill className={styles.eventIcon} />
+      <div className={styles.eventText}>{event.text}</div>
+      <RiDeleteBin6Fill
+        className={styles.deleteIcon}
+        onClick={() => removeEvent(event.id)}
+      />
+      <FaCheck
+        className={styles.checkIcon}
+        onClick={() => toggleComplete(event.id)}
+      />
     </div>
   )
 }

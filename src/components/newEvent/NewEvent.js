@@ -4,8 +4,8 @@ import styles from './NewEvent.module.css'
 function NewEvent({ addEvent }) {
   const [text, setText] = useState('')
 
-  const onSubmite = (event) => {
-    event.preventDefault()
+  const onSubmite = (submit) => {
+    submit.preventDefault()
     addEvent(text)
     setText('')
   }
