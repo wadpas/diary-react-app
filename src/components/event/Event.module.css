@@ -1,0 +1,17 @@
+.event {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  margin: 15px 0;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  border: 1px solid lightblue;
+  color: #112d49;
+  background-color: #fbfef9;
+  user-select: none;
+}
+
+.eventText {
+  width: 100%;
+  text-align: left;
+}
