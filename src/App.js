@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import './App.css'
+import Actions from './components/actions/Actions'
 import Events from './components/events/Events'
 import NewEvent from './components/newEvent/NewEvent'
 
@@ -39,6 +40,14 @@ function App() {
     )
   }
 
+  const clearEvents = () => {
+    setEvent([])
+  }
+
+  const removeCompleted = () => {
+    setEvent(events.filter((e) => !e.isComplete))
+  }
+
   return (
     <div className="App">
       <h1>Diary</h1>
@@ -47,7 +56,10 @@ function App() {
         events={events}
         removeEvent={removeEvent}
         toggleComplete={toggleComplete}
-      />
+      />{' '}
+      {!!events.length && (
+        <Actions clearEvents={clearEvents} removeCompleted={removeCompleted} />
+      )}
     </div>
   )
 }
