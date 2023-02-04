@@ -4,7 +4,20 @@
   margin: 0 auto;
 }
 
+.active {
+  color: navy;
+  text-decoration: none;
+}
 h1 {
   font-size: 2.2rem;
   margin-bottom: 40px;
+}
+
+nav a {
+  margin: 15px;
+}
+
+nav {
+  background-color: aliceblue;
+  padding: 10px;
 }

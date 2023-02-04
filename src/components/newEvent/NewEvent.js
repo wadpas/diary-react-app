@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Button from '../button/Button'
 import styles from './NewEvent.module.css'
 
 function NewEvent({ addEvent }) {
@@ -18,7 +19,9 @@ function NewEvent({ addEvent }) {
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
-        <button type="submit">Submit</button>
+        <Button type="submit" title={'Submit'}>
+          Submit
+        </Button>
       </form>
     </div>
   )

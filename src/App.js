@@ -1,9 +1,14 @@
 import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
 import Actions from './components/actions/Actions'
 import Events from './components/events/Events'
 import NewEvent from './components/newEvent/NewEvent'
+import About from './components/about/About'
+import Contacts from './components/contacts/Contacts'
+import NotFound from './notFound/NotFound'
+import Layout from './components/layout/Layout'
 
 function App() {
   const [events, setEvent] = useState([
@@ -18,6 +23,8 @@ function App() {
       isComplete: false,
     },
   ])
+
+  const completedEvents = events.filter((e) => e.isComplete).length
 
   const addEvent = (text) => {
     const newEvent = {
@@ -50,16 +57,42 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Diary</h1>
-      <NewEvent addEvent={addEvent} />
-      <Events
-        events={events}
-        removeEvent={removeEvent}
-        toggleComplete={toggleComplete}
-      />{' '}
-      {!!events.length && (
-        <Actions clearEvents={clearEvents} removeCompleted={removeCompleted} />
-      )}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route
+              index
+              element={
+                <div>
+                  <h1>Diary</h1>
+                  <NewEvent addEvent={addEvent} />
+                  <Events
+                    events={events}
+                    removeEvent={removeEvent}
+                    toggleComplete={toggleComplete}
+                  />
+                  {!!events.length && (
+                    <Actions
+                      clearEvents={clearEvents}
+                      removeCompleted={removeCompleted}
+                      completedEvents={!!completedEvents}
+                    />
+                  )}
+                  {!!completedEvents && (
+                    <h2>
+                      You completed {completedEvents} thing
+                      {completedEvents > 1 ? 's' : ''}
+                    </h2>
+                  )}
+                </div>
+              }
+            />
+            <Route path="about" element={<About />} />
+            <Route path="contacts" element={<Contacts />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   )
 }
