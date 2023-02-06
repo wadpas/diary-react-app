@@ -1,5 +1,5 @@
 import { RiFileShredLine, RiEyeOffLine } from 'react-icons/ri'
-import Button from '../button/Button'
+import Button from './Button'
 
 function Actions({ clearEvents, removeCompleted, completedEvents }) {
   return (

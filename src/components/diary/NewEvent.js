@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Button from '../button/Button'
+import Button from './Button'
 import styles from './NewEvent.module.css'
 
 function NewEvent({ addEvent }) {

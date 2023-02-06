@@ -2,13 +2,15 @@ import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
-import Actions from './components/actions/Actions'
-import Events from './components/events/Events'
-import NewEvent from './components/newEvent/NewEvent'
+import Actions from './components/diary/Actions'
+import Events from './components/diary/Events'
+import NewEvent from './components/diary/NewEvent'
 import About from './components/about/About'
 import Contacts from './components/contacts/Contacts'
-import NotFound from './notFound/NotFound'
-import Layout from './components/layout/Layout'
+import NotFound from './components/NotFound'
+import Layout from './components/Layout'
+import Frends from './components/frends/Frends'
+import Frend from './components/frends/Frend'
 
 function App() {
   const [events, setEvent] = useState([
@@ -89,6 +91,8 @@ function App() {
             />
             <Route path="about" element={<About />} />
             <Route path="contacts" element={<Contacts />} />
+            <Route path="frends" element={<Frends />} />
+            <Route path="frends/:lastName" element={<Frend />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
