@@ -20,3 +20,11 @@ nav {
   background-color: aliceblue;
   padding: 10px;
 }
+
+.frendLink {
+  text-decoration: none;
+}
+
+.frendLink:hover {
+  text-decoration: underline;
+}
